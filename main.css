@@ -7,44 +7,44 @@
 #banner-r {
     display: inline-block;
     position: absolute;
-    top: 50%;
-    right: 0;
-    width: 300px;
-    height: 200px;
+    top: 40%;
+    right: 5%;
+    width: 30%;
+    height: 250px;
     border: 5px solid black;
 }
 
-body {
-    background-color: lightcyan;
-}
-
-ul {
+#banner-r ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    width: inherit;
     height: inherit;
     background-color: #f1f1f1;
     overflow: auto;
 }
 
-li a {
+#banner-r li a {
     display: block;
     color: #000;
     padding: 8px 16px;
     text-align: center;
     text-decoration: none;
-    height: 5em;
+    height: 6em;
 }
 
-li a.active {
+#banner-r li a.active {
     background-color: #4CAF50;
     color: white;
 }
 
-li a:hover:not(.active) {
+#banner-r li a:hover:not(.active) {
     background-color: #555;
     color: white;
+}
+
+body {
+    background-color: lightcyan;
+    margin: 0;
 }
 
 #main {
@@ -56,7 +56,7 @@ li a:hover:not(.active) {
     opacity: 0.6;
 }
 
-#login-box {
+#box {
     display: flex;
     justify-content: space-between;
     margin: auto;
@@ -67,11 +67,37 @@ li a:hover:not(.active) {
     padding: 15px;
 }
 
-#register-box {
-    margin: auto;
-    width: 50%;
-    height: 90vh;
-    border: 5px solid black;
-    background-color: whitesmoke;
-    padding: 15px;
+#navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #007575;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+#navbar li {
+    float: left;
+}
+
+#navbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#navbar li a:hover {
+    background-color: #00D1D1;
+}
+
+#main-content {
+    display: flex;
+    width: 100%;
+    height: 70vh;
+    background-color: #2EFFFF;
+    margin-top: 10vh;
 }

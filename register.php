@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="main.css">
     </head>
     <body>
-        <div id="register-box">
+        <div id="box">
             <form action="" method="POST">
             <fieldset>
             <legend>New User Signup</legend>
