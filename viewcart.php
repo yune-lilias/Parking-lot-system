@@ -14,7 +14,15 @@
                 <li><a href="">Pre-Pay for Parking</a></li>
                 <li><a href="viewcart.php">My Cart</a></li>
             </ul>
+    </div>
+    <div id="content-wrap">
+        <div id="item-area">
+            <h1>Inventory</h1>
         </div>
+        <div id="price-area">
+            <h1>Total</h1>
+        </div>
+    </div>
     </body>
 
 </html>

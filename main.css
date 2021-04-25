@@ -1,3 +1,12 @@
+body {
+    background-color: lightcyan;
+    margin: 0;
+}
+
+h1 {
+    border-bottom: 2px solid black;
+}
+
 #banner-l {
     position: absolute;
     top: 30%;
@@ -40,11 +49,6 @@
 #banner-r li a:hover:not(.active) {
     background-color: #555;
     color: white;
-}
-
-body {
-    background-color: lightcyan;
-    margin: 0;
 }
 
 #main {
@@ -100,4 +104,24 @@ body {
     height: 70vh;
     background-color: #2EFFFF;
     margin-top: 10vh;
+}
+
+#content-wrap {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px;
+}
+
+#item-area {
+    background-color: #A9A9A9;
+    padding-left: 15px;
+    width: 60%;
+    height: 80vh;
+}
+
+#price-area {
+    background-color: #A9A9A9;
+    width: 40%;
+    padding-left: 15px;
+    border-left: 2px solid black;
 }
