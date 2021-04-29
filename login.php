@@ -12,8 +12,37 @@
 if($_SERVER['REQUEST_METHOD'] == "POST"){
     if(isset($_POST["name"]) && ($_POST['name'] != "") && isset($_POST["password"]) && ($_POST['password'] != "")){
         $name = $_POST["name"];
-        $password = $_POST["password"];
+        $userpass = $_POST["password"];
+
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "mydb";
+        // Create connection
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+         // Check connection
+         if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }    
         
+        $query = "SELECT *
+                  FROM users
+                  WHERE name = '$name' AND password = '$userpass'";
+        $result = mysqli_query($conn,$query);
+        if(!$result){
+            echo ' Database Error Occured ';
+        }
+        if(mysqli_num_rows($result) >= 1){
+            echo "Name found";
+            header("Location: menu.php");
+        }else{
+            echo '<script language="javascript">';
+            echo 'alert("Login Failed")';
+            echo '</script>';
+        }
+        //if name and password combo found 
+        //header("Location: menu.php");
+
     }else{
         echo '<script language="javascript">';
         echo 'alert("Login Failed")';
