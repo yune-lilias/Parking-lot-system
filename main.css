@@ -108,14 +108,19 @@ h1 {
 
 #content-wrap {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     margin: 15px;
 }
 
-#item-area {
+.contet-wrap>div {
+    flex: 50%;
+}
+
+.item-area {
     background-color: #A9A9A9;
     padding-left: 15px;
-    width: 60%;
+    width: 50%;
     height: 80vh;
 }
 
@@ -124,4 +129,14 @@ h1 {
     width: 40%;
     padding-left: 15px;
     border-left: 2px solid black;
+}
+
+.credit-card {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.credit-card input,
+label {
+    display: block;
 }
