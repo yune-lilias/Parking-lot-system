@@ -128,7 +128,6 @@ h1 {
     background-color: #A9A9A9;
     width: 40%;
     padding-left: 15px;
-    border-left: 2px solid black;
 }
 
 .credit-card {
@@ -139,4 +138,27 @@ h1 {
 .credit-card input,
 label {
     display: block;
+}
+
+.flexbox {
+    display: flex;
+}
+
+.inline {
+    display: inline;
+    width: 60vw;
+    margin: 10px;
+    padding: 20px;
+}
+
+table {
+    border: 2px solid black;
+    display: inline-table;
+}
+
+tr,
+th,
+td {
+    text-align: center;
+    border: 2px solid black;
 }
