@@ -22,29 +22,24 @@
         <div class="inline">
         <h3>Parking Spaces available</h3>
             <?php
-            $username = 'root';
-            $password = '';
-            $dbName = 'project4';
-            $dbHost = "35.222.85.157";
-            // Create connection
+            
+            include 'model.php';
+            $model = new model();
 
-            $conn = mysqli_connect($dbHost, $username, $password, $dbName);
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
             $lot_array = [];
             $price_array = [];
             $avail_array = [];
             $vip_array = [];
 
             $sql = "SELECT * FROM Lots";
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0) {
+            $result = $model->sqlcommend($sql);
+
+            if (!empty($result)) {
                 // output data of each row
 
                 echo "<table class='table-inline'><tr><th>Parking Space</th><th>Availability</th><th>VIP Status</th><th>Price</th></tr>";
-                while ($row = $result->fetch_assoc()) {
+                foreach($result as $key => $value) {
+                    $row = $value;
                     $lot = $row["lots_id"];
                     $price = $row["price"];
                     $avail = $row["is_available"];
@@ -60,8 +55,6 @@
             } else {
                 echo "0 results";
             }
-
-            $conn->close();
             ?>
         </div>
         <div class="inline">
