@@ -10,26 +10,54 @@
             <ul>
                 <li><a href="menu.php">Home</a></li>
                 <li><a href="profile.php">My Profile</a></li>
-                <li><a href="invetory.php">Rent a Car</a></li>
-                <li><a href="">Pre-Pay for Parking</a></li>
+                <li><a href="inventory.php">Rent a Car</a></li>
+                <li><a href="parking.php">Pre-Pay for Parking</a></li>
                 <li><a href="viewcart.php">My Cart</a></li>
             </ul>
     </div>
     <div id="content-wrap">
         <div class="item-area">
             <h1>Inventory</h1>
+            <?php
+                include 'model.php';
+                include 'User.php';
+                $userid = $_COOKIE['id'];
+                $username = $_COOKIE['name'];
+
+                $model = new model();
+                $user = new User($userid, $username,$model);
+                $sql = "SELECT * FROM Orders_lots";
+                $result = $model->sqlcommend($sql);
+
+            if (!empty($result)) {
+                // output data of each row
+
+                foreach($result as $key => $value) {
+                    $row = $value;
+                    $lotnum = $row["lots_id"];
+                    $price = $row["total_price"];
+                }
+                echo "Parking Space: $lotnum";
+            } else {
+                echo "Nothing in cart";
+            }
+            ?>
         </div>
         <div id="price-area">
             <h1>Total</h1>
+            <?php
+        if(!empty($result)){
+            echo $price.'$';
+        }
+            ?>
         </div>
         <div class="item-area">
             <h1>Payment</h1>
-        <form>
+        <form action="checkout.php" method="post">
             <p>Name: <input id="name" type="text"></p>
 		    <p>Email: <input name="email" type="email"></p>
             <p>Shipping Address: <input name="shipping" type="text" size="40"></p>
             <p>Billing Address: <input name="billing" type="text" size="40"></p>
-            <p>If same as Shipping: <input name="billing" type="checkbox"></p>
             <p>Phone Number: <input name="phone" type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"></p>
             <h4>Credit Card Info</h4></br>
             <div>
