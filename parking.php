@@ -66,7 +66,7 @@
         </div>
         <div class="inline">
         <h2>Choose a Parking Lot</h2>
-            <form action="addtocart.php" method="post">
+            <form action="addFromParking.php" method="post">
                 <?php
                 echo "<label for='parking'>Parking Lot Number</label>";
                 echo "<select id='parking' name='parking'>";
@@ -79,7 +79,7 @@
                 echo "</select>";
                 ?>
                 <label for="days">Duration of Rental:</label>
-                 <input type="number" id="days" name="days" max="30">
+                 <input type="number" id="days" name="days" min="1" max="30">
                  <input type="submit" value="Submit">
             </form>
         </div>
