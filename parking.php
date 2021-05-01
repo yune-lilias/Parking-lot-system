@@ -28,7 +28,7 @@
 
             $lot_array = [];
             $price_array = [];
-            $avail_array = [];
+            $avail_array = [0];
             $vip_array = [];
 
             $sql = "SELECT * FROM Lots";

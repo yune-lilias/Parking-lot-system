@@ -14,45 +14,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $name = $_POST["name"];
         $userpass = $_POST["password"];
         
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "mydb";
-        // Create connection
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        include 'model.php';
+        $model = new model();
         
-        $sql = "CREATE DATABASE mydb";
-        if (mysqli_query($conn, $sql)) {
-            echo "Database created successfully<br>";
-        } else {
-            echo "Error creating database: " . mysqli_error($conn) . "<br>";
-        }
-        mysqli_select_db ( $conn , "mydb" );
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }    
- 
-        $sql = "CREATE TABLE users (
-            name VARCHAR(255), 
-            password VARCHAR(255)
-            )";
-
-            if(mysqli_query($conn, $sql)){
-                echo "Table school created successfully<br>";
-            } else {
-                echo "Error creating table: " . mysqli_error($conn). "<br>";
-            }
-        
-        $sql = "INSERT INTO users (name, password)
+        $sql = "INSERT INTO Users (name, password)
                 VALUES ('$name', '$userpass')";
-
-        if ($conn->query($sql) === TRUE) {
-            echo "New artist successfully saved";
-        } else {
-            echo "Error: New artist failed to be saved" . $sql . "<br>" . $conn->error;
-        }
-        $conn->close();
+        $model->sqlcommend($sql);
+        
         //Redirect to Login
         header("Location: login.php");
         
