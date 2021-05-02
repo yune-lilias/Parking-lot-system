@@ -22,21 +22,54 @@
             <?php
             echo "<h1>Hello, " . $_COOKIE['name'] . "</h1>"
             ?>
-            <h2>Display order data here</h2>
+            <h2>Your order history</h2>
             
             <?php
-            
-            $userid = $_COOKIE['id'];
             include 'model.php';
-            include 'Orders.php';
-            $model = new model();
-            $orders = new Orders($userid,$model);
-            print_r($orders->cars);
-            echo "<br><br>";
-            print_r($orders->lots);
-            $orders_cars = $orders->cars;
-            $orders_lots = $orders->lots;
-           
+            include 'User.php';
+            $total = 0;
+             $user = unserialize($_COOKIE['cache']);  
+             $orders = $user->orders;
+             $result = $orders->lots;
+            if (!empty($result)) {
+                // output data of each row
+                   
+                foreach($result as $key => $value) {
+                    $row = $value;
+                    $lotnum = $row["lots_id"];
+                    $price = $row["total_price"];
+                    $time = $row["datetime"];
+                    $total = $total + $price;
+                echo "Parking Space: $lotnum<br>";
+                echo "Price: $price<br>";
+                echo "Time: $time";
+                echo "<br><br>";
+                }
+            } else {
+                echo "You have not pre pay any lot <br> <br>";
+            }
+             $result = $orders->cars;
+            if (!empty($result)) {
+                // output data of each row
+
+                foreach($result as $key => $value) {
+                    $row = $value;
+                    $card = $row["cars_id"];
+                    $price = $row["total_price"];
+                    $car = $row["carname"];
+                    $cart = $row["cartype"];
+                    $cars = $row["seats"];
+                    $total = $total + $price;
+                    $time = $row["datetime"];
+                     echo "Car name: $car $cart<br>";
+                     echo "Seat: $cars<br>";
+                     echo "Price: $price<br>";
+                     echo "Time: $time";
+                echo "<br><br>";
+                }
+            } else {
+                echo "You have not rent any car <br> <br>";
+            }
           /*
           $db = "";    
 

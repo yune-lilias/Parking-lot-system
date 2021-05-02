@@ -30,7 +30,6 @@
                    
                 foreach($result as $key => $value) {
                     $row = $value;
-                    print_r($value);
                     $lotnum = $row["lots_id"];
                     $price = $row["total_price"];
                     $total = $total + $price;

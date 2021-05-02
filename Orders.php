@@ -25,12 +25,14 @@
                     $seat = $row["seats"];
                     $price = $row["price"];
                     $time = $row["datetime"];
+                    $total_price = $row["total_price"];
                     $tmp_array["cars_id"]= $carid;
                     $tmp_array["carname"]= $carname;
                     $tmp_array["cartype"]= $cartype;
                     $tmp_array["seats"]= $seat;
                     $tmp_array["price"]= $price;
                     $tmp_array["datetime"]= $time;
+                    $tmp_array["total_price"]= $total_price;
                     array_push($this->cars,$tmp_array);
             }}
 
