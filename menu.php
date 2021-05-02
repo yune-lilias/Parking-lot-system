@@ -21,7 +21,7 @@
                 </div>
                 <div id="banner-r">
                     <ul>
-                        <li><a href="invetory.php">Rent a Car</a></li>
+                        <li><a href="inventory.php">Rent a Car</a></li>
                         <li><a href="">Pre-Pay for Parking</a></li>
                     </ul>
                 </div>

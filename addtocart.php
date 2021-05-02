@@ -15,7 +15,7 @@
             include 'model.php';
             $model = new model();
 
-            $query = "SELECT * FROM Cars WHERE carname = $carname";
+            $query = "SELECT * FROM Cars WHERE carname =\"$carname\"";
 
             $result = $model->sqlcommend($query);
 
@@ -26,7 +26,7 @@
                 $price = $row["price"];
                 $userid = $_COOKIE['id'];
                 //Not sure how to insert the parking price into table
-                $sql = "INSERT INTO Orders_cars(cars_id, user_id)
+                $sql = "INSERT INTO Orders_cars(cars_id, users_id)
                            VALUES ($carid, $userid)";
                 $model->sqlcommend($sql);
                 $totalprice = $days * $price;
