@@ -27,5 +27,13 @@
                 </div>
             </div>
     </body>
-
+<?php
+                include 'model.php';
+                include 'User.php';
+                $userid = $_COOKIE['id'];
+                $username = $_COOKIE['name'];
+                $model = new model();
+                $user = new User($userid, $username,$model);
+                setcookie ('cache', serialize($user)); 
+?>
 </html>

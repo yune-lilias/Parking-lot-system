@@ -19,61 +19,56 @@
         <div class="item-area">
             <h1>Inventory</h1>
             <?php
-                include 'model.php';
-                include 'User.php';
-                $userid = $_COOKIE['id'];
-                $username = $_COOKIE['name'];
-
-                $model = new model();
-                $user = new User($userid, $username,$model);
-                $sql = "SELECT * FROM Orders_lots WHERE users_id = $userid";
-                $result = $model->sqlcommend($sql);
-            
+            include 'model.php';
+            include 'User.php';
+            $total = 0;
+             $user = unserialize($_COOKIE['cache']);  
+             $cart = $user->cart;
+             $result = $cart->lots;
             if (!empty($result)) {
                 // output data of each row
-
+                   
                 foreach($result as $key => $value) {
                     $row = $value;
+                    print_r($value);
                     $lotnum = $row["lots_id"];
                     $price = $row["total_price"];
+                    $total = $total + $price;
+                echo "Parking Space: $lotnum<br>";
+                echo "Price: $price";
+                echo "<br><br>";
                 }
-                echo "Parking Space: $lotnum";
-                echo "<br>";
             } else {
-                echo "Nothing in cart";
+                echo "No lot in cart <br> <br>";
             }
-            $sql = "SELECT * FROM Orders_cars";
-            $result = $model->sqlcommend($sql);
+             $result = $cart->cars;
             if (!empty($result)) {
                 // output data of each row
 
                 foreach($result as $key => $value) {
                     $row = $value;
                     $card = $row["cars_id"];
-                }
-            } 
-            $sql = "SELECT * FROM Cars WHERE cars_id = $card";
-            $result = $model->sqlcommend($sql);
-            if (!empty($result)) {
-                // output data of each row
-
-                foreach($result as $key => $value) {
-                    $row = $value;
-                    $id = $row["cars_id"];
+                    $price = $row["total_price"];
                     $car = $row["carname"];
+                    $cart = $row["cartype"];
+                    $cars = $row["seats"];
+                    $total = $total + $price;
+                     echo "Car name: $car $cart<br>";
+                     echo "Seat: $cars<br>";
+                     echo "Price: $price<br>";
+                echo "<br>";
                 }
-                echo $car;
-            } 
+            } else {
+                echo "No car in cart <br> <br>";
+            }
+
+
             ?>
         </div>
         <div id="price-area">
             <h1>Total</h1>
             <?php
-        if(!empty($result)){
-            $carprice = $_COOKIE['carprice'];
-            $totalprice = ($carprice + $price);
-            echo $totalprice.'$';
-        }
+            echo $total.'$';
             ?>
         </div>
         <div class="item-area">

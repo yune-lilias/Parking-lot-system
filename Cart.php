@@ -15,35 +15,36 @@
             if (!empty ($result1)) {
                 foreach ($result1 as $key => $value) {
                      # code...
+                    
                     $tmp_array = [];
                     $row = $value;
                     $carid = $row["cars_id"];
                     $carname = $row["carname"];
                     $cartype = $row["cartype"];
                     $seat = $row["seats"];
-                    $price = $row["price"];
+                    $price = $row["total_price"];
                     $tmp_array["cars_id"] = $carid;
                     $tmp_array["carname"] = $carname;
                     $tmp_array["cartype"]= $cartype;
                     $tmp_array["seats"] = $seat;
-                    $tmp_array["price"] = $price;
+                    $tmp_array["total_price"] = $price;
                     array_push($this->cars,$tmp_array);
             }}
 
             if (!empty ($result2)) {
                 foreach ($result2 as $key => $value) {
                      # code...
+
                     $tmp_array = [];
                     $row = $value;
                     $lotid = $row["lots_id"];
                     $hour_price = $row["price"];
                     $total_price = $row["total_price"];
                     $vip = $row["is_vip"];
-                    array_push($tmp_array, $lotid);
-                    array_push($tmp_array, $hour_price);
-                    array_push($tmp_array, $total_price);
-                    array_push($tmp_array, $vip);
-                    array_push($this->lots,$tmp_array);
+                     $tmp_array["lots_id"]= $lotid;
+                    $tmp_array["price"]= $hour_price;
+                    $tmp_array["total_price"]= $total_price;
+                    $tmp_array["is_vip"]= $vip;
             }
 
         }

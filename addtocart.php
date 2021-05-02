@@ -25,11 +25,12 @@
                 $carid = $row["cars_id"];
                 $price = $row["price"];
                 $userid = $_COOKIE['id'];
-                //Not sure how to insert the parking price into table
-                $sql = "INSERT INTO Orders_cars(cars_id, users_id)
-                           VALUES ($carid, $userid)";
-                $model->sqlcommend($sql);
                 $totalprice = $days * $price;
+                //Not sure how to insert the parking price into table
+                $sql = "INSERT INTO Cart_cars(cars_id, users_id,total_rice)
+                           VALUES ($carid, $userid,$totalprice)";
+                $model->sqlcommend($sql);
+                
                 setcookie("carprice", $totalprice);
             //header("Location: viewcart.php");
 
