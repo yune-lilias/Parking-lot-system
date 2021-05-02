@@ -23,35 +23,51 @@
             echo "<h1>Hello, " . $_COOKIE['name'] . "</h1>"
             ?>
             <h2>Display order data here</h2>
+            
             <?php
-		 $db = "";    
+            
+            $userid = $_COOKIE['id'];
+            include 'model.php';
+            include 'Orders.php';
+            $model = new model();
+            $orders = new Orders($userid,$model);
+            print_r($orders->cars);
+            echo "<br><br>";
+            print_r($orders->lots);
+            $orders_cars = $orders->cars;
+            $orders_lots = $orders->lots;
+           
+          /*
+          $db = "";    
 
-                class Orders {
-                        public $cars;
-                        public $lots; 
-                        function __construct($userid,$model){ 
-                          $sql="SELECT * FROM ORDERS WHERE users_id=username;";
-                          $result = $model ->sqlcommend($sql);
-                          $this->orders = [];
-                          if (!empty ($result1)) { 
-                            $tmp_array = [];
-                            $row = $value;
-                            $carid = $row["cars_id"];
-                            $carname = $row["carname"];
-                            $cartype = $row["cartype"];
-                            $seat = $row["seats"];
-                            $price = $row["price"];
-                            $time = $row["datetime"];
-                            $tmp_array["cars_id"]= $carid;
-                            $tmp_array["carname"]= $carname;
-                            $tmp_array["cartype"]= $cartype;
-                            $tmp_array["seats"]= $seat;
-                            $tmp_array["price"]= $price;
-                            $tmp_array["datetime"]= $time;
-                            array_push($this->cars,$tmp_array);
-                          }
-                        }
-            ?>
+           class Orders {
+            public $cars;
+            public $lots; 
+            function __construct($userid,$model){ 
+              $sql="SELECT * FROM ORDERS WHERE users_id=username;";
+              $result = $model ->sqlcommend($sql);
+              $this->orders = [];
+              if (!empty ($result1)) { 
+                foreach ($result1 as $key => $value) {
+                $tmp_array = [];
+                $row = $value;
+                $carid = $row["cars_id"];
+                $carname = $row["carname"];
+                $cartype = $row["cartype"];
+                $seat = $row["seats"];
+                $price = $row["price"];
+                $time = $row["datetime"];
+                $tmp_array["cars_id"]= $carid;
+                $tmp_array["carname"]= $carname;
+                $tmp_array["cartype"]= $cartype;
+                $tmp_array["seats"]= $seat;
+                $tmp_array["price"]= $price;
+                $tmp_array["datetime"]= $time;
+                array_push($this->cars,$tmp_array);
+                }
+              }
+            }
+        } */
             ?>
         </div>
     </div>

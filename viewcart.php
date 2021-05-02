@@ -26,9 +26,9 @@
 
                 $model = new model();
                 $user = new User($userid, $username,$model);
-                $sql = "SELECT * FROM Orders_lots";
+                $sql = "SELECT * FROM Orders_lots WHERE users_id = $userid";
                 $result = $model->sqlcommend($sql);
-
+            
             if (!empty($result)) {
                 // output data of each row
 
@@ -38,16 +38,41 @@
                     $price = $row["total_price"];
                 }
                 echo "Parking Space: $lotnum";
+                echo "<br>";
             } else {
                 echo "Nothing in cart";
             }
+            $sql = "SELECT * FROM Orders_cars";
+            $result = $model->sqlcommend($sql);
+            if (!empty($result)) {
+                // output data of each row
+
+                foreach($result as $key => $value) {
+                    $row = $value;
+                    $card = $row["cars_id"];
+                }
+            } 
+            $sql = "SELECT * FROM Cars WHERE cars_id = $card";
+            $result = $model->sqlcommend($sql);
+            if (!empty($result)) {
+                // output data of each row
+
+                foreach($result as $key => $value) {
+                    $row = $value;
+                    $id = $row["cars_id"];
+                    $car = $row["carname"];
+                }
+                echo $car;
+            } 
             ?>
         </div>
         <div id="price-area">
             <h1>Total</h1>
             <?php
         if(!empty($result)){
-            echo $price.'$';
+            $carprice = $_COOKIE['carprice'];
+            $totalprice = ($carprice + $price);
+            echo $totalprice.'$';
         }
             ?>
         </div>

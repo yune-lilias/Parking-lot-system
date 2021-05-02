@@ -7,35 +7,41 @@
 
 <body>
     <?php
-    class addtocart
-    {
-        function _construct()
-        {
-        }
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        if (isset($_POST["car"]) && ($_POST['car'] != "") && isset($_POST["days"]) && ($_POST['days'] != "")) {
+            $carname = $_POST['car'];
+            $days = $_POST['days'];
 
-        function addToShoppingCart()
-        {
-            $carname = $_POST['carname'];
-            $carprice = $_POST['carprice'];
+            include 'model.php';
+            $model = new model();
 
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "mydb";
-            // Create connection
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            $query = "SELECT * FROM Cars WHERE carname = $carname";
 
-            mysqli_select_db($conn, "mydb");
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
+            $result = $model->sqlcommend($query);
 
-            $sql = "INSERT INTO cart (item, price)
-                VALUES ('$carname', '$carprice')";
+            if (!empty($result)) {
+                foreach($result as $key => $value)
+                $row = $value;
+                $carid = $row["cars_id"];
+                $price = $row["price"];
+                $userid = $_COOKIE['id'];
+                //Not sure how to insert the parking price into table
+                $sql = "INSERT INTO Orders_cars(cars_id, user_id)
+                           VALUES ($carid, $userid)";
+                $model->sqlcommend($sql);
+                $totalprice = $days * $price;
+                setcookie("carprice", $totalprice);
+            //header("Location: viewcart.php");
+
+        } else {
+            echo '<script language="javascript">';
+            echo 'alert("Retrieval Failed")';
+            echo '</script>';
         }
     }
-    ?>
-</body>
+}
 
+    ?>
+    <a href="viewcart.php"><input type="button" id="btn1" value="OK"></a>
+</body>
 </html>

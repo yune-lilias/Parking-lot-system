@@ -63,6 +63,8 @@
                 }
                 echo "</select>";
                 ?>
+                <label for="days">Duration of Rental:</label>
+                <input type="number" id="days" name="days" min="1" max="30">
                  <input type="submit" value="Submit">
             </form>
         </div>

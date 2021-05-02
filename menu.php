@@ -17,10 +17,7 @@
             </div>
             <div id="main-content">
                 <div id="banner-l">
-                    <?php
-                        echo "<h1>Welcome USER</h1>";
-                        //Let's try to output the name of whoever logged in
-                    ?>
+                    <h1>Welcome</h1>
                 </div>
                 <div id="banner-r">
                     <ul>
