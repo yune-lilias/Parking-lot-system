@@ -11,7 +11,7 @@
                  <li><a href="menu.php">Home</a></li>
                  <li><a href="profile.php">My Profile</a></li>
                  <li><a href="inventory.php">Rent a Car</a></li>
-                 <li><a href="">Pre-Pay for Parking</a></li>
+                 <li><a href="parking.php">Pre-Pay for Parking</a></li>
                  <li><a href="viewcart.php">My Cart</a></li>
                 </ul>
             </div>
