@@ -31,7 +31,7 @@
                             lots_id = $lot_num";
                 $model->sqlcommend($sql);
                 //Not sure how to insert the parking price into table
-                $sql = "INSERT INTO Orders_lots (users_id,lots_id, total_price)
+                $sql = "INSERT INTO Cart_lots (users_id,lots_id, total_price)
                            VALUES ('$userid','$lot_num', '$price')";
                 $model->sqlcommend($sql);
                 //header("Location: viewcart.php");

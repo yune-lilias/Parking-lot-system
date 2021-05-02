@@ -27,7 +27,7 @@
                 $userid = $_COOKIE['id'];
                 $totalprice = $days * $price;
                 //Not sure how to insert the parking price into table
-                $sql = "INSERT INTO Cart_cars(cars_id, users_id,total_rice)
+                $sql = "INSERT INTO Cart_cars(cars_id, users_id,total_price)
                            VALUES ($carid, $userid,$totalprice)";
                 $model->sqlcommend($sql);
                 

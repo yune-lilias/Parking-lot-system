@@ -45,6 +45,7 @@
                     $tmp_array["price"]= $hour_price;
                     $tmp_array["total_price"]= $total_price;
                     $tmp_array["is_vip"]= $vip;
+                    array_push($this->lots,$tmp_array);
             }
 
         }

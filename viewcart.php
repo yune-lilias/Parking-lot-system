@@ -18,11 +18,17 @@
     <div id="content-wrap">
         <div class="item-area">
             <h1>Inventory</h1>
+            
             <?php
-            include 'model.php';
+             include 'model.php';
             include 'User.php';
             $total = 0;
-             $user = unserialize($_COOKIE['cache']);  
+             $model = new model();
+             $userid = $_COOKIE['id'];
+                $username = $_COOKIE['name'];
+                $user = new User($userid, $username,$model);
+
+            $total = 0;
              $cart = $user->cart;
              $result = $cart->lots;
             if (!empty($result)) {
@@ -63,6 +69,7 @@
 
 
             ?>
+     
         </div>
         <div id="price-area">
             <h1>Total</h1>

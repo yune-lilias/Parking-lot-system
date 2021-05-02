@@ -19,16 +19,18 @@
     </div>
     <div id="profile-page">
         <div class="center">
-            <?php
-            echo "<h1>Hello, " . $_COOKIE['name'] . "</h1>"
-            ?>
-            <h2>Your order history</h2>
+               <?php
+            echo "<h1>Hello, " . $_COOKIE['name'] . "</h1>";
+            echo "<h2>Your order history</h2>";
             
-            <?php
+
             include 'model.php';
             include 'User.php';
             $total = 0;
-             $user = unserialize($_COOKIE['cache']);  
+             $model = new model();
+             $userid = $_COOKIE['id'];
+                $username = $_COOKIE['name'];
+                $user = new User($userid, $username,$model);
              $orders = $user->orders;
              $result = $orders->lots;
             if (!empty($result)) {
@@ -102,6 +104,7 @@
             }
         } */
             ?>
+
         </div>
     </div>
 </body>

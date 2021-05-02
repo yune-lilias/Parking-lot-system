@@ -7,12 +7,17 @@
     </head>
     <body>
         <?php
-            $userid = $_COOKIE['id'];
-            include 'model.php';
-            $model = new model();
-            $orders = new Orders($userid,$model);
+             include 'model.php';
+            include 'User.php';
+            $total = 0;
+             $model = new model();
+             $userid = $_COOKIE['id'];
+                $username = $_COOKIE['name'];
+                $user = new User($userid, $username,$model);
+                $user->checkout($model);
+                echo "checkout success";
         ?>
-    
+    <a href="viewcart.php"><input type="button" id="btn1" value="OK"></a>
     </body>
 
 </html>
