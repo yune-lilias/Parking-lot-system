@@ -80,11 +80,12 @@
         <div class="item-area">
             <h1>Payment</h1>
         <form action="checkout.php" method="post">
-            <p>Name: <input id="name" type="text"></p>
-		    <p>Email: <input name="email" type="email"></p>
+            <p>Name: <input id="name" type="text" name="name"></p>
+	    <p>Email: <input name="email" type="email"></p>
             <p>Shipping Address: <input name="shipping" type="text" size="40"></p>
             <p>Billing Address: <input name="billing" type="text" size="40"></p>
             <p>Phone Number: <input name="phone" type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"></p>
+	    <p>Format: xxx-xxx-xxxx</p>
             <h4>Credit Card Info</h4></br>
             <div>
                 <div class="credit-card">
@@ -93,7 +94,7 @@
                 </div>
                 <div class="credit-card">
                     <label for="code">Security Code</label>
-                 <input id = "code" type="password" name="code" size="4">
+                 <input id = "code" type="password" name="code" maxlength="4" size="4">
                 </div>
             </div>
             <div>
