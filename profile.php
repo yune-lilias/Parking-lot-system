@@ -24,7 +24,34 @@
             ?>
             <h2>Display order data here</h2>
             <?php
+		 $db = "";    
 
+                class Orders {
+                        public $cars;
+                        public $lots; 
+                        function __construct($userid,$model){ 
+                          $sql="SELECT * FROM ORDERS WHERE users_id=username;";
+                          $result = $model ->sqlcommend($sql);
+                          $this->orders = [];
+                          if (!empty ($result1)) { 
+                            $tmp_array = [];
+                            $row = $value;
+                            $carid = $row["cars_id"];
+                            $carname = $row["carname"];
+                            $cartype = $row["cartype"];
+                            $seat = $row["seats"];
+                            $price = $row["price"];
+                            $time = $row["datetime"];
+                            $tmp_array["cars_id"]= $carid;
+                            $tmp_array["carname"]= $carname;
+                            $tmp_array["cartype"]= $cartype;
+                            $tmp_array["seats"]= $seat;
+                            $tmp_array["price"]= $price;
+                            $tmp_array["datetime"]= $time;
+                            array_push($this->cars,$tmp_array);
+                          }
+                        }
+            ?>
             ?>
         </div>
     </div>
