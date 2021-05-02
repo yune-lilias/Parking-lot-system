@@ -17,16 +17,24 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         include 'model.php';
         $model = new model();
         
+        $sql = "select * from Users where name = \"".$name."\"";
+        $result = $model->sqlcommend($sql);
+if(!empty($result)){
+         echo '<script language="javascript">';
+        echo 'alert("Account exist")';
+        echo '</script>';
+}else{
+
         $sql = "INSERT INTO Users (name, password)
                 VALUES ('$name', '$userpass')";
         $model->sqlcommend($sql);
         
         //Redirect to Login
-        header("Location: login.php");
+        header("Location: login.php");}
         
     }else{
         echo '<script language="javascript">';
-        echo 'alert("Register Failed")';
+        echo 'alert("Please fill in all blanks")';
         echo '</script>';
     }
 }
