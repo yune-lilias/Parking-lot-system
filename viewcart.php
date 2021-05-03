@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>View Cart</title>
         <link rel="stylesheet" href="main.css">
+        <script type="text/javascript" src=https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js></script>
     </head>
     <body>
     <div id="navbar">
@@ -80,21 +81,21 @@
         <div class="item-area">
             <h1>Payment</h1>
         <form action="checkout.php" method="post">
-            <p>Name: <input id="name" type="text" name="name"></p>
-	    <p>Email: <input name="email" type="email"></p>
+            <p>Name: <input id="name" type="text" name ="name"></p>
+		    <p>Email: <input name="email" type="email"></p>
             <p>Shipping Address: <input name="shipping" type="text" size="40"></p>
             <p>Billing Address: <input name="billing" type="text" size="40"></p>
-            <p>Phone Number: <input name="phone" type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"></p>
-	    <p>Format: xxx-xxx-xxxx</p>
+            <p>Phone Number: <input name="phone" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"></p>
+            <p>Format: xxx-xxx-xxxx</p>
             <h4>Credit Card Info</h4></br>
             <div>
                 <div class="credit-card">
                     <label for="cardnumber">Card Number</label>
-                    <input id = "cardnumber" type="number" name="cardnumber">
+                    <input id = "cardnumber" type="text" name="cardnumber">
                 </div>
                 <div class="credit-card">
                     <label for="code">Security Code</label>
-                 <input id = "code" type="password" name="code" maxlength="4" size="4">
+                 <input id = "code" type="password" name="code" maxlength="4" size="5">
                 </div>
             </div>
             <div>
@@ -134,11 +135,29 @@
                     </select>
                 </div>
             </div>
-            <p>Coupon: <input id="coupon" type="text"></p>
+            <p id='cardtype'>Cardtype: </p>
+            
+            <p>Coupon: <input id="coupon" type="text" name="coupon"></p>
             <input type="submit" value="Submit">
         </form>
+        <button id="check-cc">Check Type</button>
     </div>
     </div>
     </body>
-
 </html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js" integrity="sha512-KaIyHb30iXTXfGyI9cyKFUIRSSuekJt6/vqXtyQKhQP6ozZEGY8nOtRS6fExqE4+RbYHus2yGyYg1BrqxzV6YA==" crossorigin="anonymous"></script>
+    <script>
+        var cc_type = 'unknown';
+        var cleave = new Cleave('#cardnumber', {
+            creditCard: true,
+            delimiter: '-',
+            onCreditCardTypeChanged: function(type) {
+                console.log(type);
+                cc_type = type;
+            }
+        });
+        $('#check-cc').click(function() {
+            alert(cleave.getFormattedValue() + ' is a ' + cc_type + ' card');
+            document.getElementById('cardtype').innerHTML = (cc_type);
+        });
+    </script>
