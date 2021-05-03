@@ -157,7 +157,15 @@
             }
         });
         $('#check-cc').click(function() {
+            if(cc_type == 'mastercard' || cc_type == 'amex' || cc_type == 'visa'){
             alert(cleave.getFormattedValue() + ' is a ' + cc_type + ' card');
-            document.getElementById('cardtype').innerHTML = (cc_type);
-        });
+            document.getElementById('cardtype').innerHTML = (cc_type);}
+            else if(cc_type != 'unknown'){
+              alert(cleave.getFormattedValue() + ' is a ' + cc_type + ' card, but we do not accept this type now');
+            document.getElementById('cardtype').innerHTML = (cc_type);}
+            else{
+                alert(cleave.getFormattedValue() + ' is an invalid card');
+            }
+            }
+        );
     </script>

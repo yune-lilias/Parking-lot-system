@@ -45,6 +45,7 @@ public $checksum;
                $this->type = 'Invalid';
             	$this->valid = False;
                 }
+
             }
 
 

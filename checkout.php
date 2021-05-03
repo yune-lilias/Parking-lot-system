@@ -67,14 +67,22 @@
             $userid = $_COOKIE['id'];
             $username = $_COOKIE['name'];
             $user = new User($userid, $username, $model);
-            $user->checkout($model);
+            
             if($coupon_set){
                 echo "Your coupon is valid<br>";
             }
             include 'Creditcard.php';
-            $card = new Creditcard($_POST['cardnumber']);
+            $cn = str_replace("-", "", $_POST['cardnumber']);
+            $card = new Creditcard($cn);
+            if($card->valid){
             echo "Thank you for using ".$card->type."<br>";
             echo "checkout success<br>";
+            $user->checkout($model);}
+            else{
+            echo "Invalid card number or unaccept card type<br>";
+            echo "Please use visa, mastercard or amex card<br>";
+            echo "checkout fail<br>";
+            }
         } else {
             echo "Error with Checkout<br>";
         }
