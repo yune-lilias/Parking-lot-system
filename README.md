@@ -4,4 +4,4 @@ Before paying for the order, users can add items to their shopping cart, and thi
 Besides, we add a simple credit card detecter to our page, which will find whether the card number is invalid, and show name of the bank if card number is valid.
 
 Youtube Video: https://youtu.be/1Y_UrNFfq5A
-Team Member Roles: https://codd.cs.gsu.edu/~smaharath1/WP/PW/Project4-main/summary.html
+
